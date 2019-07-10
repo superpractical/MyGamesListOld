@@ -1,0 +1,170 @@
+<link rel="stylesheet" href="/css/dashboard.css">
+<link rel="stylesheet" href="/css/games.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.js"></script>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Nav Bar Bootstrap -->
+<nav class="navbar navbar-default" role="navigation" style="background-color: #272B30; border: #272B30;">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <a class="navbar-brand" href="/dashboard" style="color: #fff; font-size: 20px;">MyGamesList</a>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+        
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="/dashboard" style="color: #fff; font-size: 20px;">Home</a></li>
+            <li><a href="/friends" style="color: #fff; font-size: 20px;">Friends</a></li>
+            <li><a href="/games" style="color: #fff; font-size: 20px;" class="active">Games</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #fff; font-size: 20px;"><%= name %> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Settings</a></li>
+            <li class="divider"></li>
+            <li><a href="/users/logout">Logout</a></li>
+            </ul>
+        </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Search -->
+<form action="http://localhost:5000/games" method="POST">
+    <input style="width: 30%; text-align: center;display: inline-flex;margin-left: 35%;" class="form-control" name="search" type="text" placeholder="Search">
+    <span class="input-group-btn" style="margin: 0; padding: 0;display: inline;">
+        <button class="btn btn-default" id="searchBtn" type="submit" style="left: -2%;margin-bottom: 2px;border-radius: 3px;">Search</button>
+        <button class="btn btn-default" id="filterBtn" type="button" style="left: -34.5%;margin-bottom: 2px;border-radius: 3px;"><i class="fa fa-filter"></i></button>
+    </span>
+</form>
+
+<!-- Show Results -->
+<div class="slides3">
+    <% for(var i=0; i < searchResponse.length; i++) { %>
+        <div class="slides2">
+            <div class="imgDescriptionWrapper">
+                <% if (searchResponse[i].hasOwnProperty('cover')) { %>
+                    <img src="<%= searchResponse[i].cover.url.replace('t_thumb', 't_1080p') %>">
+                <% } else { %>
+                    <img src="http://photos1.blogger.com/blogger/3775/2528/1600/%20COVER%20NOT%20AVAILABLE-NO%20TIME%20TO%20FIND.jpg">
+                <% } %>
+                <div class="imgDescription">
+                    <p class='img_description_text'><%= searchResponse[i].name %><br><button onclick="createModal(<%= i %>);" id="myBtn" class="viewMoreBtn">View More</button></p>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<!-- Modal -->
+<div id="modal-ID" class="w3-modal">
+    <% for(var i=0; i < searchResponse.length; i++) { %>
+        <div class="w3-modal-content" style="border-radius: 10px; display: none;" id="<%= i %>">
+            <div class="w3-container">
+                <span onclick="document.getElementById('<%= i %>').style.display='none'; document.getElementById('modal-ID').style.display='none';" class="w3-button w3-display-topright" style="border-radius: 10px;">&times;</span>
+
+                <% if (searchResponse[i].hasOwnProperty('cover')) { %>
+                    <img class="contentCover" src="<%= searchResponse[i].cover.url.replace('t_thumb', 't_1080p') %>"> 
+                <% } else { %>
+                    <img class="contentCover" src="http://photos1.blogger.com/blogger/3775/2528/1600/%20COVER%20NOT%20AVAILABLE-NO%20TIME%20TO%20FIND.jpg">
+                <% } %>
+                
+                <div class="contentName">
+                    <h1><%= searchResponse[i].name %></h1>
+                    
+                    <% if (searchResponse[i].hasOwnProperty('involved_companies')) { %>
+                        <p>By:
+                            <% for(let j = 0; j < searchResponse[i].involved_companies.length; j++) { %>
+                                <%= searchResponse[i].involved_companies[j].company.name %>,
+                            <% } %>
+                        </p>
+                    <% } else { %>
+                        <p>By: Unknown</p>
+                    <% } %>
+
+                    <% if (searchResponse[i].hasOwnProperty('release_dates')) { %>
+                        <p>Release Date: <%= searchResponse[i].release_dates[0].human %></p>
+                    <% } else { %>
+                        <p>Release Date: Unknown</p>
+                    <% } %>
+
+                    <% if (searchResponse[i].hasOwnProperty('summary')) { %>
+                        <h2>Summary:</h2>
+                        <p><%= searchResponse[i].summary %></p>
+                    <% } %>
+                </div>
+
+                <div class="contentPlatforms">
+                    <% if (searchResponse[i].hasOwnProperty('platforms')) { %>
+                        <h2>Platforms:</h2>
+                        <% for(let j = 0; j < searchResponse[i].platforms.length; j++) { %>
+                            <p><%= searchResponse[i].platforms[j].name %></p>
+                        <% } %>
+                    <% } %>
+                </div>
+
+                <div class="contentGenres">
+                    <% if (searchResponse[i].hasOwnProperty('genres')) { %>
+                        <h2>Genres:</h2>
+                        <% for(let j = 0; j < searchResponse[i].genres.length; j++) { %>
+                            <p><%= searchResponse[i].genres[j].name %></p>
+                        <% } %>
+                    <% } %>
+                </div>
+
+                <% if (searchResponse[i].hasOwnProperty('screenshots')) { %>
+                    <div class="slider2" id="slider2">
+                        <h2 style="text-align:left;">Screenshots:</h2>
+                        <div class="slides">
+                            <% for(let j = 0; j < searchResponse[i].screenshots.length; j++) { %>
+                                <div class="slides2">
+                                    <div class="imgDescriptionWrapper">
+                                        <img src="<%= searchResponse[i].screenshots[j].url.replace('t_thumb', 't_1080p') %>">
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                <% } %>
+
+                <% if (searchResponse[i].hasOwnProperty('similar_games')) { %>
+                    <div class="slider2" id="slider2">
+                        <h2 style="text-align:left;">Similar Games:</h2>
+                        <div class="slides">
+                            <% for(let j = 0; j < searchResponse[i].similar_games.length; j++) { %>
+                                <div class="slides2">
+                                    <% if (searchResponse[i].similar_games[j].hasOwnProperty('cover')) { %>
+                                        <div class="imgDescriptionWrapper">
+                                            <img src="<%= searchResponse[i].similar_games[j].cover.url.replace('t_thumb', 't_1080p') %>">
+                                            <div class="imgDescription">
+                                                <p  style='font-size: 25px;' class='img_description_text'><%= searchResponse[i].similar_games[j].name %></p>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                <% } %>
+
+                    
+
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<script src="/scripts/games.js"></script>

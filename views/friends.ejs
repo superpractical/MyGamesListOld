@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="/css/dashboard.css">
+<link rel="stylesheet" href="/css/friends.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<!-- Nav Bar Bootstrap -->
+<nav class="navbar navbar-default" role="navigation" style="background-color: #272B30; border: #272B30;">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <a class="navbar-brand" href="/dashboard" style="color: #fff; font-size: 20px;">MyGamesList</a>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+        
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="/dashboard" style="color: #fff; font-size: 20px;">Home</a></li>
+            <li><a href="/friends" style="color: #fff; font-size: 20px;" class="active">Friends</a></li>
+            <li><a href="/games" style="color: #fff; font-size: 20px;">Games</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #fff; font-size: 20px;"><%= name %> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Settings</a></li>
+            <li class="divider"></li>
+            <li><a href="/users/logout">Logout</a></li>
+            </ul>
+        </li>
+        </ul>
+    </div>
+</nav>
+

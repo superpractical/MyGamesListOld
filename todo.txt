@@ -1,0 +1,14 @@
+TODO:
+
+1) Add horizontal scrolling
+2) Add test if author name is null
+4) Work on games tab using gamedatabase
+5) Change other article buttons
+6) Dismiss items in feed
+7) Build Friends system
+8) MAYBE add an avatar for users
+9) Work on customizability for dashboard
+10) make covers fit img_wrapper
+11) Make dashboard mobile friendly
+12) Work on filters for /games page
+13) Take buttons on other articles div out (replace with horizontal scroll)

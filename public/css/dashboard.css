@@ -1,0 +1,458 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+title {
+    display: none;
+}
+
+.active {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#logoutBtn {
+    position: absolute; 
+    top: 1.75%; 
+    right: 10%; 
+    text-align:right;
+    font-size: 20px;
+}
+
+/* Main Content Div */
+#polygonOutputDiv {
+    position: absolute;
+    left: 1.7%;
+    overflow-y: auto;
+    top: 7%;
+    max-height: 93%;
+    min-width: 300px;
+    max-width: 35%;
+    align-items: center;
+}
+
+#polygonOutputDiv div {
+    font-size: 20px;
+}
+
+#polygonOutputDiv::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+#polygonOutputDiv::-webkit-scrollbar-thumb {
+    background: #242424;
+    border-radius: 10px;
+}
+#polygonOutputDiv::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.feedNum {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.imgElement {
+    position: relative;
+    border-radius: 8px;
+    max-height: 450px;
+    width: 100%;
+}
+
+/* IGN Output */
+#ignOutputDiv {
+    position: absolute;
+    right: 25%;
+    overflow-y: auto;
+    top: 10%;
+    max-height: 73%;
+    min-width: 30px;
+    max-width: 30%;
+    align-items: center;
+}
+
+#ignOutputDiv::-webkit-scrollbar { 
+    width: 0 !important 
+}
+
+#ignutputDiv div {
+    font-size: 20px;
+}
+
+#feedNum2 {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.imgElement2 {
+    position: relative;
+    border-radius: 8px;
+    max-height: 325px;
+    width: 20%;
+}
+
+.outputDiv {
+    display: inline-block;
+    width: 40%;
+}
+
+/* Slides */
+.slider {
+    width: 55%;
+    text-align: center;
+    overflow: hidden;
+    background-color: #272B30;
+    border-radius: 8px;
+    left: 38%;
+    position: fixed;
+    /* overflow-y: hidden; */
+    /* top: 16.3%; */
+}
+
+.slides {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    scroll-behavior: smooth;
+    
+    border-radius: 5px;
+    
+    scroll-behavior: smooth;
+    
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-points-x: repeat(300px);
+    scroll-snap-type: mandatory;
+}
+.slides::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.slides::-webkit-scrollbar-thumb {
+    background: #242424;
+    border-radius: 10px;
+}
+.slides::-webkit-scrollbar-track {
+    background: transparent;
+}
+.slides > div {
+    flex-shrink: 0;
+    width: 300px;
+    height: 320px;
+    border-radius: 10px;
+    background: #eee;
+    transform-origin: center center;
+    transform: scale(0.9);
+    transition: transform 0.5s;
+    position: relative;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+}
+.slides > div:target {
+    transform: scale(0.8);
+}
+
+img {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+  
+.slider > a {
+    display: inline-flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    /* background: white; */
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 0 0.5rem 0;
+    position: relative;
+}
+.slider > a:active {
+    top: 1px;
+}
+.slider > a:focus {
+    background: #000;
+}
+  
+/* Don't need button navigation */
+@supports (scroll-snap-type) {
+    .slider > a {
+      display: none;
+    }
+}
+  
+#slideTag {
+    margin-right: 5px;
+    font-size: 10px;
+    background: white;
+}
+
+/* Image Text */
+.imgDescriptionWrapper {
+    position: relative;
+    height: 200px;
+    width: 257px;
+}
+  
+.imgDescription {
+    position: absolute;
+    border-radius: 10px;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: opacity .2s, visibility .2s;
+    background-color: rgb(113,128,147,0.8);
+}
+
+.imgDescriptionWrapper:hover .imgDescription {
+    visibility: visible;
+    opacity: 1;
+}
+  
+.img__description {
+    transition: .2s;
+    transform: translateY(1em);
+}
+  
+.imgDescriptionWrapper:hover .img__description {
+    transform: translateY(0);
+}
+
+/* Navbar CSS */
+.navbar-brand {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+}
+.navbar-toggle {
+    z-index:1;
+}
+
+
+/* Popular Games Tab */
+.slider2 {
+    width: 55%;
+    text-align: center;
+    overflow: hidden;
+    background-color: #272B30;
+    border-radius: 8px;
+    left: 38%;
+    position: fixed;
+    /* overflow-y: hidden; */
+    top: 55%;
+}
+
+.slides2 {
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+    
+    border-radius: 5px;
+    
+    scroll-behavior: smooth;
+    
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-points-x: repeat(300px);
+    scroll-snap-type: mandatory;
+}
+.slides2::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.slides2::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+}
+.slides2::-webkit-scrollbar-track {
+    background: transparent;
+}
+.slides2 > div {
+    flex-shrink: 0;
+    width: 120%;
+    height: 120%;
+    border-radius: 10px;
+    background: #eee;
+    transform-origin: center center;
+    transform: scale(0.9);
+    transition: transform 0.5s;
+    position: relative;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+}
+.slides2 > div:target {
+    transform: scale(0.8);
+}
+
+img {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+  
+.slider2 > a {
+    display: inline-flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    /* background: white; */
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 0 0.5rem 0;
+    position: relative;
+}
+.slider2 > a:active {
+    top: 1px;
+}
+.slider2 > a:focus {
+    background: #000;
+}
+  
+/* Don't need button navigation */
+@supports (scroll-snap-type) {
+    .slider > a {
+      display: none;
+    }
+}
+  
+#slideTag {
+    margin-right: 5px;
+    font-size: 10px;
+    background: white;
+}
+
+.viewMoreBtn {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+}
+
+.viewMoreBtn:hover {
+    background-color: #555555;
+    color: white;
+}
+
+.viewMoreBtn {
+    border: none;
+    color: black;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
+
+@media screen and (max-width:360px) {
+    /* CSS for screens that are 320 pixels or less will be put in this section */
+    #logoutBtn {
+        font-size: 5px;
+        right: 2%;
+        top: 1.25%;
+    }
+
+    #polygonOutputDiv {
+        position: relative;
+        left: 10%;
+        text-align: center;
+        font-size: 5px;
+    }
+
+    #polygonOutputDiv div {
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width:361px) and (max-width:640px) {
+    /* for screens that are at least 320 pixels wide but less than or equal to 640 pixels wide */
+    #logoutBtn {
+        font-size: 9px;
+        right: 3.5%;
+        top: 1.3%;
+    }
+
+    #polygonOutputDiv {
+        position: relative;
+        text-align: center;
+    }
+
+    #polygonOutputDiv div {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1400px) {
+    #logoutBtn {
+        font-size: 20px;
+        right: 4%;
+        top: 1.5%;
+    }
+
+    #feedNum {
+        font-size: 30px; 
+    }
+
+    #polygonOutputDiv {
+        left: 2.75%;
+    }
+
+    #polygonOutputDiv div {
+        font-size: 15px;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 641px) and (max-width: 999px) {
+    #logoutBtn {
+        font-size: 15px;
+        right: 4%;
+        top: 1.5%;
+    }
+
+    #polygonOutputDiv {
+        left: 3.2%;
+        position: relative;
+    }
+
+    #polygonOutputDiv div {
+        font-size: 15px;
+    }
+}
